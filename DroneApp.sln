@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneApp.Android", "DroneApp\DroneApp.Android\DroneApp.Android.csproj", "{FDC1E13C-86D6-4F36-9158-FB35DE3B05D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneApp.Android", "DroneApp.Android\DroneApp.Android.csproj", "{FDC1E13C-86D6-4F36-9158-FB35DE3B05D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneApp.iOS", "DroneApp\DroneApp.iOS\DroneApp.iOS.csproj", "{EBB23F2C-4A7C-42F0-BF52-79C9F653D12B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneApp.iOS", "DroneApp.iOS\DroneApp.iOS.csproj", "{EBB23F2C-4A7C-42F0-BF52-79C9F653D12B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneApp", "DroneApp\DroneApp\DroneApp.csproj", "{115D1A82-25AE-4B84-9BFD-40FFAAA7748B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DroneApp", "DroneApp\DroneApp.csproj", "{115D1A82-25AE-4B84-9BFD-40FFAAA7748B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
