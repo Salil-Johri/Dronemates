@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DroneApp.Settings"
+            Padding="10, 0">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="General">
+        <StackLayout>
+            <Picker x:Name="Notification" 
+                    Title="Notification Preferences">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Every 15 Minutes</x:String>
+                        <x:String>Every 1 Hour</x:String>
+                        <x:String>Every 4 Hours</x:String>
+                        <x:String>Every 24 Hours</x:String>
+                        <x:String>Never</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Text Preferences">
+        <StackLayout>
+            <Label x:Name="label" 
+                   Text="(uninitialized)" />
+            <Slider x:Name="slider" 
+                    ValueChanged="ChangeFontSize"
+                    Maximum="36"
+                    Minimum="12"/>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

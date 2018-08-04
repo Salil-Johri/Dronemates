@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DroneApp.AerodromePages.AerodromeEdit"
+             Padding="20">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="Info_Layout">
+                <Label Text="Aerodrome Code" />
+                <Entry Placeholder="Enter Code" Text="{Binding AeroCode}"/>
+                <Label Text="Aerodrome Name" />
+                <Entry Placeholder="Enter Name" Text="{Binding AeroName}"/>
+                <Label Text="Distance from Aerodrome"/>
+                <Entry Placeholder="Enter Distance" Text="{Binding AeroDistance}"/>
+                <Label Text="Direction of Aerodrome from HP" />
+                <Entry Placeholder="Enter Direction" Text="{Binding AeroDirection}"/>
+                <Label Text="Contact Number of Aerodrome" />
+                <Entry Placeholder="Enter Number" Keyboard="Telephone"  Text="{Binding AeroPhone}"/>
+                <!--<Button Text="NR GC Website" Clicked="OnNRGC" BackgroundColor="Blue" TextColor="White" />
+                <Button Text="Skyvector Website" Clicked="OnSkyVector" BackgroundColor="Blue" TextColor="White"/>-->
+                <Button Text="Save" Clicked="OnButtonClicked" BackgroundColor="Green"/>
+                <Button Text="Delete" BackgroundColor="Red"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

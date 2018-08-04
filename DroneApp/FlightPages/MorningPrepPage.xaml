@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DroneApp.FlightPages.MorningPrepPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="Morning_Prep_Layout" Spacing="50">
+                <StackLayout x:Name="Morning_PrepQ1">
+                    <Label Text="1. Are batteries charged?" FontSize="Large" TextColor="Black" />
+                    <Label Text="a. Remote Controls" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_1a" Title="Select One" SelectedItem="{Binding batteries_remote}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="b. Intelligent Flight Batteries" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_1b" Title="Select One" SelectedItem="{Binding batteries_intelligent_flight}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="c. Mobile Devices" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_1d" Title="Select One" SelectedItem="{Binding batteries_intelligent_flight}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout x:Name="Morning_PrepQ2">
+                    <Label Text="2. Does weather meet proper criteria? (Use NAV Canada)" FontSize="Large" TextColor="Black"/>
+                    <Label Text="a. Visibility less than 5 km" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_2a" Title="Select one" SelectedItem="{Binding weather_visibility}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="b. Cloud Ceiling Less than 1000 ft AGL" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_2b" Title="Select One">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="c. Wind gusts less than 33.3 km/h" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_2c" Title="Select One" SelectedItem="{Binding wind_gusts}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="d. No adverse weather (i.e. Precipitation, fog, etc.)" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_2d" Title="Select One" SelectedItem="{Binding adverse_weather}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="e. Temperature in between -5 and 35C" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_2e" Title="Select One" SelectedItem="{Binding temperature}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Morning_PrepQ3">
+                    <Label Text="3. Necessary Documents Packed?" FontSize="Large" TextColor="Black"/>
+                    <Label Text="a. Copy of Radio License" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3a" Title="Select One" SelectedItem="{Binding radio_license}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="b. Copy of flight certificate" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3b" Title="Select One" SelectedItem="{Binding flight_certificate}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="c. Copy of SFOC and cert." FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3c" Title="Select One" SelectedItem="{Binding sfoc_certification}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="d. Copy of insurance policy" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3d" Title="Select One" SelectedItem="{Binding insurance_policy}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="e. Current Toronto VTA" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3e" Title="Select One" SelectedItem="{Binding tor_vta}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="f. Copy of drone manuals" FontAttributes="Bold"/>
+                    <Picker x:Name="morningPrepQuestion_3f" Title="Select One" SelectedItem="{Binding drone_manuals}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Morning_PrepQ4">
+                    <Label Text="4. Signed into DJI app and working connection with UAV?" FontSize="Large" TextColor="Black"/>
+                    <Picker x:Name="morningPrepQuestion_4" Title="Select One" SelectedItem="{Binding dji_working}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+                <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

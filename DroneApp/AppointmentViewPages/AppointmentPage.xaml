@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DroneApp.AppointmentViewPages.AppointmentPage"
+             Padding="20">
+    <ScrollView>
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="Name" />
+            <Entry Text="{Binding Name}" />
+            <Label Text="Notes" />
+            <Entry Text="{Binding Notes}" />
+            <!--<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Month" Grid.Column="0" Grid.Row="0"/>
+                <Entry Text="{Binding Month}" Grid.Column="0" Grid.Row="1" Placeholder="MM" Keyboard="Numeric"/>
+                <Label Text="Day" Grid.Column="1" Grid.Row="0"/>
+                <Entry Text="{Binding Day}" Grid.Column="1" Grid.Row="1" Placeholder="DD" Keyboard="Numeric"/>
+                <Label Text="Year" Grid.Column="2" Grid.Row="0"/>
+                <Entry Text="{Binding Year}" Grid.Column="2" Grid.Row="1" Placeholder="YYYY" Keyboard="Numeric"/>
+            </Grid>-->
+            <Label Text="Start date of Job:" />
+            <DatePicker x:Name="startDateJob"
+                        Format="d"
+                        MinimumDate="{Binding sys:DateTime.Now}"
+                        Date="{Binding StartDateJob}"/>
+            <Label Text="End date of job:" />
+            <DatePicker x:Name="endDateJob"
+                        Format="d"
+                        MinimumDate="{Binding MinDate}"
+                        Date="{Binding EndDateJob}"/>
+            <Button x:Name="Curr_"
+                    Text="Use Current Location"
+                    Clicked="Current_Location"/>
+            <Label Text="Enter Location"/>
+            <Entry x:Name="SetLocation"
+                   Text=""
+                   Placeholder="Street Address, City, Province/State" />
+            <Button x:Name="Set_" Text="Save Location" Clicked="Set_Location">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding Source={x:Reference SetLocation},
+                                       Path=Text.Length}"
+                                 Value="0">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green"/>
+            <Button Text="Delete" Clicked="OnDeleteClicked" BackgroundColor="Red" />
+            <Button Text="Morning Prep Page" Clicked="OnMorning" BackgroundColor="Blue" TextColor="White"/>
+            <Button Text="Security Plan" Clicked="OnSecurity" BackgroundColor="Blue" TextColor="White"/>
+            <Button Text="Normal Procedure Page" Clicked="OnNormal" BackgroundColor="Blue" TextColor="White"/>
+            <Button Text="Site Prep Page" Clicked="OnSite" BackgroundColor="Blue" TextColor="White"/>
+            <Button Text="Cancel" Clicked="OnCancelClicked" BackgroundColor="Gray" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

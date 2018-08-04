@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DroneApp.EmergencyPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="Emergency_Plan_Layout" Spacing="30">
+                <StackLayout x:Name="Fly_away_section">
+                    <Label Text="Fly Away Protocol" FontSize="Large" FontAttributes="Bold" />
+                    <Label Text="1. Pilot shall comunicate to other crew members that a fly-away has occurred" FontAttributes="Italic"/>
+                    <Label Text="2. Site will be secured, crew members will initiate a search of nearby area for UAV" FontAttributes="Italic" />
+                    <StackLayout x:Name="Emergency_PlanQ3">
+                        <Label Text="3. Once UAV has been retrieved, the ACC and the ATC listed in Site prep will be contacted again once: " FontAttributes="Italic"/>
+                        <Label Text="a. The UAV has been identified" Margin="5, 5" FontSize="Small"/>
+                        <Label Text="b. The maximum flight time has expired" Margin="5, 5" FontSize="Small" />
+                        <Label Text="c. GPS Signal has been re-established." Margin="5, 5" FontSize="Small"/>
+                    </StackLayout>
+                    <Label Text="In the event of a vertical fly-away, contact the ACC shift manager in the phone number listed under the site prep page." FontAttributes="Bold"/>
+                    <Label Text="In the event of a horizontal fly-away, the ATC of UAV's direction will be contacted." FontAttributes="Bold"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Low_Battery_Section">
+                    <Label Text="Low Battery" FontSize="Large" FontAttributes="Bold" />
+                    <Label Text="1. Initiate RTH (manual or automatic)" FontAttributes="Italic"/>
+                    <Label Text="2. RTH Initiated Automatically if no action is taken in 10 seconds" FontAttributes="Italic"/>
+                    <Label Text="3. Critical battery - rapid RED flashes" />
+                    <Label Text="a. If battery becomes too depleted, critical battery failsafe will be engaged and the aircraft will automatically descend to land." Margin="5, 5"/>
+                    <Label Text="NOTE: " FontAttributes="Bold"/>
+                    <Label Text="Throttle control up to hover and maneuver if landing area is unsuitable" Margin="5,5"/>
+                    <Label Text="Pilot can cancel RTH procedure by pressing once on the RTH button" Margin="5, 5"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Commands_And_Control_Link_Failure_Section">
+                    <Label Text="Command and Control Link Failure" FontSize="Large" FontAttributes="Bold" />
+                    <Label Text="1. Failsafe RTH initiated if signal is lost for more than 3 seconds" FontAttributes="Italic"/>
+                    <Label Text="2. UAV Travels to Home Point at specific Failsafe altitude when further than 20m from the homepoint." FontAttributes="Italic"/>
+                    <Label Text="3. UAV Automatically descends when closer than 20m from home point." FontAttributes="Italic"/>
+                    <Label Text="4. RTH may be interrupted if link recovered by moving the throttle." FontAttributes="Italic"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Out_Of_Bounds_Section" Spacing="20">
+                    <Label Text="Out of Bounds" FontSize="Large" FontAttributes="Bold" />
+                    <StackLayout x:Name="GPS_Signal_Strong_Category" >
+                        <Label Text="If GPS signal is strong: " />
+                        <Label Text="1. ASI flashing green" Margin="0, 0, 5, 5" FontAttributes="Italic"/>
+                        <Label Text="2. Flight restricted to maximum altitude" Margin="5, 5" FontAttributes="Italic"/>
+                        <Label Text="3. Flight restricted to maximum radius" Margin="5, 5" FontAttributes="Italic"/>
+                    </StackLayout>
+                    <StackLayout x:Name="GPS_Signal_Weak_Category">
+                        <Label Text="If GPS Signal is weak: " Margin="5, 5" FontAttributes="Italic"/>
+                        <Label Text="1. ASI flashing yellow" Margin="5, 5" FontAttributes="Italic"/>
+                        <Label Text="2. Flight restricted to maximum altitude" Margin="5, 5" FontAttributes="Italic" />
+                        <Label Text="3. Flight radius NOT restricted. " Margin="5, 5" FontAttributes="Italic"/>
+                        <Label Text="4. Aircraft returns to bounds when GPS signal is recovered." Margin="5, 5" FontAttributes="Italic"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Traffic_Right_Of_Way_Section">
+                    <Label Text="Traffic Right-of-Way" FontSize="Large" FontAttributes="Bold"/>
+                    <Label Text="The UAV shall give way to all other aircraft and immediately land safely if an aircraft is in or approaching the operational area below 300m AGL." 
+                               FontAttributes="Italic"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Notification_of_First_Responders_Section">
+                    <Label Text="Notification of First Responders" FontSize="Large" FontAttributes="Bold" />
+                    <Label Text="If first responders are required, services will be requested by calling 9-1-1 or contact the non-emergency services if situation is not threatening" 
+                               FontAttributes="Italic"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Fire_Section">
+                    <Label Text="Fire" FontSize="Large" FontAttributes="Bold"/>
+                    <Label Text="Small fires involving the UAV or batteries will be extinguished by the Ground Supervisor with the fire extinguisher located at the in the secured area"
+                               FontAttributes="Italic"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Incident_And_Accident_Reporting_Section">
+                    <Label Text="Incident and Accident Reporting" FontSize="Large" FontAttributes="Bold"/>
+                    <Label Text="Any incident or accident occurring during or as a result of this operation shall be reported to Transport Canada" FontAttributes="Italic"/>
+                    <Label Text="The UAV will not be operated again until Transport Canada has issued approval for operation" FontAttributes="Italic"/>
+                </StackLayout>
+
+                <StackLayout x:Name="System_Indicator_Images_Layout">
+                    <Label Text="Inspire 1 Pro Aircraft System Indicator" />
+                    <Image Source="inspire_pro_aircraft_system_indicator.png"/>
+                    <Label Text="Mavic Aircraft System Indicator" />
+                    <Image Source="mavic_aircraft_system_indicator.jpg" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
