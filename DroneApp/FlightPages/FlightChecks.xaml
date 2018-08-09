@@ -45,8 +45,10 @@
 
                     <StackLayout x:Name="Site_PrepQ3" Spacing="0">
                         <Label Text="3. Information for Provincial Airport Officer: " FontSize="Large" TextColor="Black"/>
-                        <Label Text="Date:" VerticalOptions="EndAndExpand" FontAttributes="Bold"/>
-                        <Label Text="{Binding StartDateJob, StringFormat='{0:MM/dd/yyyy}' }" VerticalTextAlignment="Center" FontSize="Small" TextColor="DarkGray" />
+                        <Label Text="Date From:" VerticalOptions="EndAndExpand" FontAttributes="Bold"/>
+                        <Label Text="{Binding StartDateJob, StringFormat='{0:MM/dd/yyyy}' }" VerticalTextAlignment="Center" FontSize="Small" />
+                        <Label Text="Date To:" VerticalOptions="EndAndExpand" FontAttributes="Bold"/>
+                        <Label Text="{Binding EndDateJob, StringFormat='{0:MM/dd/yyyy}' }" VerticalTextAlignment="Center" FontSize="Small"  />
                         <Label Text="Location:" FontAttributes="Bold" />
                         <Entry Placeholder="200 Univerity Ave., Waterloo, ON" Text="{Binding Address}"/>
                         <Label Text="Time Start:" FontAttributes="Bold" />
@@ -64,45 +66,69 @@
                             <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
                             <Entry Text="{Binding MinCoord}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
-
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
                             <Entry Text="{Binding SecCoord}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
-                        <Label Text="Maximum Altitude:" FontAttributes="Bold" />
-                        <Entry Placeholder="Enter Maximum Altitude" Text="{Binding MaxAlt}" FontSize="Small"/>
-                        <Label Text="Radius:" FontAttributes="Bold" />
+                        <Label Text="Location:" FontAttributes="Bold" />
+                        <Entry Placeholder="200 Univerity Ave., Waterloo, ON" Text="{Binding Address}"/>
+                        <Label Text="Time:" FontAttributes="Bold" />
+                        <Label Text="Maximum Altitude(m):" FontAttributes="Bold" />
+                        <Entry x:Name="MaxAltEntry" Placeholder="Enter Maximum Altitude" Text="{Binding MaxAlt}" FontSize="Small" Keyboard="Numeric"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="FeetToMeter" Text="To Meter" Clicked="UnitConvertAsync" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0" Grid.Row="0"/>
+                            <Button x:Name="MeterToFeet" Text="To Feet" Clicked="UnitConvertAsync" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1" Grid.Row="0"/>
+                        </Grid>
+                        <Label Text="Radius (m):" FontAttributes="Bold" />
                         <Entry Placeholder="Enter Radius" Text="{Binding Radius}" x:Name="radiusQuestion3" Keyboard="Numeric" FontSize="Small"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="FeetToMeterRadius" Text="To Meter" Clicked="UnitConvertAsyncRadius" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0" Grid.Row="0"/>
+                            <Button x:Name="MeterToFeetRadius" Text="To Feet" Clicked="UnitConvertAsyncRadius" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1" Grid.Row="0"/>
+                        </Grid>
                         <Label Text="Company Name: Dronemates" FontAttributes="Bold"/>
                         <Label Text="Contact Person" FontAttributes="Bold" />
                         <Entry Placeholder="Name" Text="{Binding ContactName}" x:Name="contactNameQuestion3" FontSize="Small" />
-                        <Entry Placeholder="Phone number" Text="{Binding ContactNum}" x:Name="contactPhoneQuestion3" Keyboard="Numeric" FontSize="Small"/>
+                        <Entry Placeholder="Phone number" Text="{Binding ContactNum}" x:Name="contactPhoneQuestion3" Keyboard="Telephone" FontSize="Small"/>
+                        <Button x:Name="CallContact" Text="Call Contact" Clicked="OnCallClickedAsync" BackgroundColor="#03A9F4" TextColor="White" />
                     </StackLayout>
-
-
+                    
+                    
                     <StackLayout x:Name="Site_PrepQ4" Spacing="0">
                         <Label Text="4. Site Location" FontSize="Large" TextColor="Black" />
                         <Label Text="4.1 Map of Site: " />
+                        <Button Text="View Map" TextColor="White" BackgroundColor="#03A9F4" Clicked="OnViewMap"/>
                         <Label Text="4.2. Identify Secure zone with launch/Home point" />
                         <StackLayout Orientation="Horizontal" >
-                            <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding DegCoordLaunch}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding MinCoordLaunch}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                        </StackLayout>
+                                <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
+                                <Entry Text="{Binding DegCoordLaunch}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
+                                <Entry Text="{Binding MinCoordLaunch}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            </StackLayout>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding SecCoordLaunch}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                        </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                                <Entry Text="{Binding SecCoordLaunch}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            </StackLayout>
                     </StackLayout>
-
-
                     <StackLayout x:Name="Site_PrepQ5" Spacing="0">
                         <Label Text="5. Identify Nearby Aerodromes" FontSize="Large" TextColor="Black"/>
-                        <Button Clicked="OnAerodromeButtonClicked" Text="View Nearby Aerodromes"/>
+                        <Button Clicked="OnAerodromeButtonClicked" Text="View Nearby Aerodromes" BackgroundColor="#03A9F4" TextColor="White"/>
                     </StackLayout>
                     <StackLayout x:Name="Site_PrepQ6" Spacing="0">
                         <Label Text="6. Identify Non-emergency first responder service numbers: " FontSize="Large" TextColor="Black"/>
@@ -122,7 +148,7 @@
                     </StackLayout>
                     <StackLayout x:Name="Site_PrepQ7" Spacing="0">
                         <Label Text="7. ACC Shift Manager Appropriate in Current Area" FontSize="Large" TextColor="Black"/>
-                        <Picker x:Name="sitePrepQuestion_7" Title="Select One" SelectedItem="{Binding ACCMan}">
+                        <Picker x:Name="sitePrepQuestion_7" Title="Select One" SelectedItem="{Binding ACCMan}" SelectedIndexChanged="ACCManagerSelected">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>780-890-8397 - Edmonton ACC Shift Manager</x:String>
@@ -130,19 +156,23 @@
                                     <x:String>506-867-7173 - Moncton ACC Shift Manager</x:String>
                                     <x:String>514-633-3365 - Montreal ACC Shift Manager</x:String>
                                     <x:String>905-676-4509 - Toronto ACC Shift Manager</x:String>
-                                    <x:String>604-586-450  - Vancouver ACC Shift Manager</x:String>
+                                    <x:String>604-586-4500 - Vancouver ACC Shift Manager</x:String>
                                     <x:String>204-983-8338 - Winnipeg ACC Shift Manager</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
+                        <Button Text="Call ACC" BackgroundColor="#03A9F4" TextColor="White" Clicked="OnACCManagerCallAsync"/>
                     </StackLayout>
+                    
+
                     <StackLayout x:Name="Site_PrepQ8">
-                        <Label Text="8. File Notam" FontSize="Large" TextColor="Black"/>
+                        <Label Text="8. NOTAM File" FontSize="Large" TextColor="Black"/>
                         <Label Text="i. NOTAM template under: " />
                         <Entry Placeholder="Enter text" Text="{Binding DroneName}" FontSize="Small"/>
                         <Label Text="ii. NOTAM Number: " />
                         <Entry Placeholder="Enter NOTAM" Text="{Binding NotamNum}" Keyboard="Numeric" FontSize="Small"/>
-                        <Label Text="Enter following information to file NOTAM:"/>
+                        <Button x:Name="CallNotam" Text="Call NOTAM" Clicked="OnCallClickedAsync" BackgroundColor="#03A9F4" TextColor="White" />
+                        <Label Text="File NOTAM:"/>
                         <Label Text="Coordinates" />
                         <StackLayout Orientation="Horizontal" >
                             <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
@@ -157,33 +187,38 @@
                             <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
                             <Entry Text="{Binding SecCoordNotam}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
-                        <Label Text="Area - Radius (nm - Nautical Miles)" />
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Direction" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DirectionNotam}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <Label Text="Area - Radius (nm)" />
                         <Entry Placeholder="Enter Radius" Text="{Binding Radius}" Keyboard="Numeric" FontSize="Small"/>
-                        <Label Text="Height Above Ground Level (ft - Feet)" FontSize="Small"/>
-                        <Entry Placeholder="Enter Height" Text="{Binding MaxAlt}" Keyboard="Numeric" FontSize="Small"/>
+                        <Label Text="Height Above Ground Level (ft)" FontSize="Small"/>
+                        <Entry Placeholder="Enter Height (ft)" Text="{Binding MaxAlt}" Keyboard="Numeric" FontSize="Small"/>
                         <Label Text="Type of UAV" />
-                        <Entry Placeholder="Enter type of UAV" Text="{Binding UAVType}" FontSize="Small"/>
-                        <Label Text="Wingspan (in - Inches)" />
-                        <Entry Placeholder="Enter Wingspan" Text="{Binding Wingspan}" Keyboard="Numeric" FontSize="Small"/>
-                        <Label Text="Colour of UAV" />
-                        <Entry Placeholder="Enter Colour" Text="{Binding UAVColour}" FontSize="Small"/>
-                        <Label Text="Weight of UAV (lb - Pounds)" />
-                        <Entry Placeholder="Enter Weight" Text="{Binding UAVWeight}" FontSize="Small"/>
-                        <Label Text="Date of Mission: " />
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Entry Placeholder="DD" Text="{Binding Day}" Keyboard="Numeric" x:Name="notamDayQuestion8" Grid.Row="0" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small"/>
-                            <Entry Placeholder="MM" Text="{Binding Month}" Keyboard="Numeric" x:Name="notamMonthQuestion8" Grid.Row="0" Grid.Column="1" VerticalOptions="EndAndExpand" FontSize="Small"/>
-                            <Entry Placeholder="YYYY" Text="{Binding Year}" Keyboard="Numeric" x:Name="notamYearQuestion8" Grid.Row="0" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Text="Inspire 1" Clicked="OnDroneTypeClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0"/>
+                            <Button Text="Mavic Air" Clicked="OnDroneTypeClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1"/>
                         </Grid>
-                        <Label Text="Time of Mission (UTC Hours)" />
+                        <Label Text="Wingspan (in)" />
+                        <Entry x:Name="WingspanEntry" Placeholder="Enter Wingspan" Text="{Binding Wingspan}" Keyboard="Numeric" FontSize="Small"/>
+                        <Label Text="Colour of UAV" />
+                        <Entry x:Name="ColourEntry"  Placeholder="Enter Colour" Text="{Binding UAVColour}" FontSize="Small"/>
+                        <Label Text="Weight of UAV (lb)" />
+                        <Entry x:Name="WeightEntry"  Placeholder="Enter Weight" Text="{Binding UAVWeight}" FontSize="Small"/>
+                        <Label Text="Date of Mission: " />
+                        <DatePicker x:Name="NotamDatePicker"
+                                    Format="d"
+                                    Date="{Binding DateNotam}" />
+                        <Label Text="Time of Mission" />
                         <Grid ColumnSpacing="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -196,7 +231,7 @@
                             <Entry Placeholder="MM" Text="{Binding Min}" Grid.Row="0" Keyboard="Numeric" x:Name="notamMinuteQuestion8" Grid.Column="1" WidthRequest="50" FontSize="Small"/>
                         </Grid>
                         <Label Text="Contact Phone Number: " />
-                        <Entry Placeholder="Enter phone number" Text="{Binding NotamNum}" Keyboard="Numeric" />
+                        <Entry Placeholder="Enter phone number" Text="{Binding NotamPhone}" Keyboard="Telephone" />
                     </StackLayout>
                     <Button Clicked="OnSaveClicked" Text="Save" BackgroundColor="Green"/>
                 </StackLayout>
@@ -240,6 +275,7 @@
 
                     <StackLayout x:Name="Morning_PrepQ2">
                         <Label Text="2. Does weather meet proper criteria? (Use NAV Canada)" FontSize="Large" TextColor="Black"/>
+                        <Button Text="Check Weather" Clicked="OnWeatherClicked" BackgroundColor="#03A9F4" TextColor="White" />
                         <Label Text="a. Visibility more than 5 km" FontAttributes="Bold"/>
                         <Picker x:Name="morningPrepQuestion_2a" Title="Select one" SelectedItem="{Binding weather_visibility}">
                             <Picker.ItemsSource>
@@ -250,7 +286,7 @@
                             </Picker.ItemsSource>
                         </Picker>
                         <Label Text="b. Cloud Ceiling more than 1000 ft AGL" FontAttributes="Bold"/>
-                        <Picker x:Name="morningPrepQuestion_2b" Title="Select One" SelectedItem="{Binding cloud_ceiling}">
+                        <Picker x:Name="morningPrepQuestion_2b" Title="Select One">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Yes</x:String>
@@ -454,7 +490,7 @@
                             </Picker.ItemsSource>
                         </Picker>
                         <Label Text="a. Is Unecessary Equipment in a secure location?" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_4a" Title="Select One" SelectedItem="{Binding unnecessary_equip_stored}">
+                        <Picker x:Name="securityPrepQuestion_4a" Title="Select One" SelectedItem="{Binding unecessary_equip_stored}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Yes</x:String>
@@ -487,6 +523,7 @@
                 <StackLayout x:Name="Pre_Flight_Inspections_Section">
                     <StackLayout x:Name="Normal_ProcedureQ1">
                         <Label Text="Pre-Flight Inspections" FontSize="Large" FontAttributes="Bold"/>
+                        <Button Text="Call ACC" Clicked="OnACCManagerCallAsync" BackgroundColor="#03A9F4" TextColor="White"/>
                         <Label Text="1. Has the ACC Manager been called?" FontSize="Medium" TextColor="Black"/>
                         <Picker x:Name="normalProcedureQuestion_1" Title="Select One" SelectedItem="{Binding AccCalled}">
                             <Picker.ItemsSource>
@@ -614,7 +651,7 @@
                         <Entry Placeholder="Enter Low Battery Warning %" Text="{Binding LowBatt}" Keyboard="Numeric" FontSize="Small" Margin="5, 0, 5, 0"/>
                         <Label Text="Critical Battery Warning %" Margin="6, 0, 0, 0"/>
                         <Entry Placeholder="Critical Batter Warning %" Text="{Binding CritBatt}"  Keyboard="Numeric" FontSize="Small" Margin="5, 0, 5, 0"/>
-                        <Label Text="Is Enable Multiple Flight Modes On?" Margin="6, 0, 0, 0"/>
+                        <Label Text="Is Enable Multiple Flight Modes on?" Margin="6, 0, 0, 0" />
                         <Picker x:Name="normalProcedureQuestion_10" Title="Select One" SelectedItem="{Binding MultFlight}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">

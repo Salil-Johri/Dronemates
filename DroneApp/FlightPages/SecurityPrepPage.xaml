@@ -1,106 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DroneApp.FlightPages.SecurityPrepPage">
+             x:Class="DroneApp.FlightPages.SecurityPrepPage"
+             Padding="20">
     <ContentPage.Content>
         <ScrollView>
-                <StackLayout x:Name="Security_Plan_Layout" Spacing="30">
-                    <StackLayout x:Name="Security_PlanQ1">
-                        <Label Text="1. Home point is 20m or greater from any obstacle?" FontSize="Large" TextColor="Black"/>
-                        <Picker x:Name="securityPrepQuestion_1" Title="Select One" SelectedItem="{Binding home_point_confirm}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </StackLayout>
-
-
-                    <StackLayout x:Name="Security_PlanQ2">
-                        <Label Text="2. Pylons are set up around the site?" FontSize="Large" TextColor="Black" />
-                    <Picker x:Name="securityPrepQuestion_2" Title="Select One" SelectedItem="{Binding pylons_around_site}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </StackLayout>
-
-
-                    <StackLayout x:Name="Security_PlanQ3">
-                        <Label Text="3. Confirm secured station has the following" FontSize="Large" TextColor="Black"/>
-                        <Label Text="a. Fire Extinguisher" FontAttributes="Bold"/>
-                    <Picker x:Name="securityPrepQuestion_3a" Title="Select One" SelectedItem="{Binding fire_extinguisher}">
-                            <Picker.ItemsSource>
+            <StackLayout x:Name="Security_Plan_Layout" Spacing="30">
+                <StackLayout x:Name="Security_PlanQ1">
+                    <Label Text="1. Home point is 20m or greater from any obstacle?" FontSize="Large" TextColor="Black"/>
+                    <Picker x:Name="securityPrepQuestion_1" Title="Select One" SelectedItem="{Binding home_point_confirm}">
+                        <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="b. First Aid kit" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_3b" Title="Select One" SelectedItem="{Binding first_aid_kit}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="c. Ground Supervisor" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_3c" Title="Select One" SelectedItem="{Binding ground_supervisor}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="d. Aviation Radio" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_3d" Title="Select One" SelectedItem="{Binding aviation_radio}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="e. Necessary Documents" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_3e" Title="Select One" SelectedItem="{Binding necessary_docs}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </StackLayout>
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
 
 
-                    <StackLayout x:Name="Security_PlanQ4">
-                        <Label Text="4. Is the site clear?" FontSize="Large" TextColor="Black"/>
-                        <Picker x:Name="securityPrepQuestion_4" Title="Select One" SelectedItem="{Binding site_clear}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="a. Is Unecessary Equipment in a secure location?" FontAttributes="Bold"/>
-                        <Picker x:Name="securityPrepQuestion_4a" Title="Select One" SelectedItem="{Binding unecessary_equip_stored}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Yes</x:String>
-                                    <x:String>No</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </StackLayout>
+                <StackLayout x:Name="Security_PlanQ2">
+                    <Label Text="2. Pylons are set up around the site?" FontSize="Large" TextColor="Black" />
+                    <Picker x:Name="securityPrepQuestion_2" Title="Select One" SelectedItem="{Binding pylons_around_site}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Security_PlanQ3">
+                    <Label Text="3. Confirm secured station has the following" FontSize="Large" TextColor="Black"/>
+                    <Label Text="a. Fire Extinguisher" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_3a" Title="Select One" SelectedItem="{Binding fire_extinguisher}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="b. First Aid kit" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_3b" Title="Select One" SelectedItem="{Binding first_aid_kit}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="c. Ground Supervisor" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_3c" Title="Select One" SelectedItem="{Binding ground_supervisor}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="d. Aviation Radio" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_3d" Title="Select One" SelectedItem="{Binding aviation_radio}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="e. Necessary Documents" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_3e" Title="Select One" SelectedItem="{Binding necessary_docs}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+
+
+                <StackLayout x:Name="Security_PlanQ4">
+                    <Label Text="4. Is the site clear?" FontSize="Large" TextColor="Black"/>
+                    <Picker x:Name="securityPrepQuestion_4" Title="Select One" SelectedItem="{Binding site_clear}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Text="a. Is Unecessary Equipment in a secure location?" FontAttributes="Bold"/>
+                    <Picker x:Name="securityPrepQuestion_4a" Title="Select One" SelectedItem="{Binding unecessary_equip_stored}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yes</x:String>
+                                <x:String>No</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
 
 
                 <StackLayout x:Name="Security_PlanQ5">

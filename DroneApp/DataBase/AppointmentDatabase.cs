@@ -1,45 +1,48 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using DroneApp.TKMap.CustomPins;
 using SQLite;
-using DroneApp.AerodromePages;
+
 namespace DroneApp.DataBase
 {
     public class AppointmentDatabase
     {
+        //Create SQL connection 
         public SQLiteAsyncConnection database;
 
         public AppointmentDatabase(string dbPath)
         {
+            //Establish file path w/n database
             database = new SQLiteAsyncConnection(dbPath);
+            //Create appointments table 
             database.CreateTableAsync<Appointment>().Wait();
+            //Create aerodromes table 
             database.CreateTableAsync<Aerodromes>().Wait();
+            //Create Pin Table 
+            database.CreateTableAsync<Pins>().Wait();
+            //Create Circle Table
+            database.CreateTableAsync<Circles>().Wait();
         }
-
-        public Task<List<Appointment>> GetItemsAsync()
-        {
-            return database.Table<Appointment>().ToListAsync();
-        }
-
+        //Get, set/save, and delete functions
+        //All require async commands to utilize 
         public Task<List<Aerodromes>> GetAerodromesAsync()
         {
             return database.Table<Aerodromes>().ToListAsync();
         }
-
+        public Task<List<Appointment>> GetItemsAsync()
+        {
+            return database.Table<Appointment>().ToListAsync();
+        }       
         public Task<List<Appointment>> GetItemsNotDoneAsync()
         {
             return database.QueryAsync<Appointment>("SELECT * FROM [Appointment] WHERE [Done] = 0");
         }
-
         public Task<List<Appointment>> GetItemsDoneAsync()
         {
             return database.QueryAsync<Appointment>("SELECT * FROM [Appointment] WHERE [Done] = 1");
         }
-
-        public Task<Appointment> GetItemAsync(int ID)
-        {
-            return database.Table<Appointment>().Where(i => i.ID == ID).FirstOrDefaultAsync();
-        }
-
+        public Task<Appointment> GetItemAsync(int id) => database.Table<Appointment>().Where(i => i.ID == id).FirstOrDefaultAsync();
+  
         public Task<int> SaveItemAsync(Appointment item)
         {
             if (item.ID != 0)
@@ -51,27 +54,24 @@ namespace DroneApp.DataBase
                 return database.InsertAsync(item);
             }
         }
-
-        public Task<int> SaveAerodromeAsync(Aerodromes aerodrome)
+        public Task<int> SaveAerodromesAsync(Aerodromes aerodromes)
         {
-            if (aerodrome.ID != 0)
+            if (aerodromes.ID != 0)
             {
-                return database.UpdateAsync(aerodrome);
+                return database.UpdateAsync(aerodromes);
             }
-             else
+            else
             {
-                return database.InsertAsync(aerodrome);
+                return database.InsertAsync(aerodromes);
             }
         }
-
-        public Task<int> DeleteAerodromeAsync(Aerodromes aerodrome)
-        {
-            return database.DeleteAsync(aerodrome);
-        }
-
         public Task<int> DeleteItemAsync(Appointment item)
         {
             return database.DeleteAsync(item);
+        }
+        public Task<int> DeleteAerodromeAsync(Aerodromes aerodromes)
+        {
+            return database.DeleteAsync(aerodromes);
         }
     }
 }

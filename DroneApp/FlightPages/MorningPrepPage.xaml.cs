@@ -1,27 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using DroneApp.DataBase;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using DroneApp.DataBase;
+
 namespace DroneApp.FlightPages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MorningPrepPage : ContentPage
 	{
 		public MorningPrepPage ()
 		{
 			InitializeComponent ();
 		}
-
-        async void OnSaveClicked(object sender, EventArgs e)
+        private async void OnSaveClicked(object sender, EventArgs e)
         {
             var apptitem = (Appointment)BindingContext;
             await App.Database.SaveItemAsync(apptitem);
             await Navigation.PopAsync();
+        }
+        protected override async void OnDisappearing()
+        {
+            base.OnDisappearing();
+            var apptitem = (Appointment)BindingContext;
+            await App.Database.SaveItemAsync(apptitem);
+        }
+        private void OnWeather(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri(uriString: "https://flightplanning.navcanada.ca/cgi-bin/CreePage.pl?Langue=anglais&NoSession=NS_Inconnu&Page=Fore-obs%2Fmetar-taf-map&TypeDoc=html"));
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DroneApp.FlightPages.MorningPrepPage">
+             x:Class="DroneApp.FlightPages.MorningPrepPage"
+             Padding="20">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout x:Name="Morning_Prep_Layout" Spacing="50">
@@ -38,6 +39,7 @@
 
                 <StackLayout x:Name="Morning_PrepQ2">
                     <Label Text="2. Does weather meet proper criteria? (Use NAV Canada)" FontSize="Large" TextColor="Black"/>
+                    <Button Text="Check Weather" Clicked="OnWeather" BackgroundColor="#03A9F4" TextColor="White" />
                     <Label Text="a. Visibility less than 5 km" FontAttributes="Bold"/>
                     <Picker x:Name="morningPrepQuestion_2a" Title="Select one" SelectedItem="{Binding weather_visibility}">
                         <Picker.ItemsSource>

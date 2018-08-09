@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using DroneApp.DataBase;
+using DroneApp.TKMap.Pages;
 
 namespace DroneApp.AppointmentViewPages
 {
@@ -17,13 +13,18 @@ namespace DroneApp.AppointmentViewPages
         {
             InitializeComponent();
         }
-        private async void View_Location(object sender, EventArgs e)
+        async void View_Location(object sender, EventArgs e)
         {
-            //View_Button.IsEnabled = false;
-            //await Navigation.PushAsync(new MapPage(((Appointment)BindingContext).Latitude, ((Appointment)BindingContext).Longitude, ((Appointment)BindingContext).Address));
-            //View_Button.IsEnabled = true;
+            View_Button.IsEnabled = false;
+
+            var answer = await DisplayAlert("Would you like to view location on map?", null, "Yes", "No");
+            if (answer)
+            {
+                await Navigation.PushAsync(new SamplePage(((Appointment)BindingContext).Longitude, ((Appointment)BindingContext).Latitude, (Appointment)BindingContext));
+            }
+            View_Button.IsEnabled = true;
         }
-        private async void NotCompleted(object sender, EventArgs e)
+        async void NotCompleted(object sender, EventArgs e)
         {
             var Appt = ((Appointment)BindingContext);
             Appt.Done = 0;
