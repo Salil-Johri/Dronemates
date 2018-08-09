@@ -3,7 +3,6 @@ using SQLiteNetExtensionsAsync.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using DroneApp.DataBase;
-
 namespace DroneApp.AerodromePages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -13,7 +12,6 @@ namespace DroneApp.AerodromePages
         {
             InitializeComponent();
         }
-
         async void OnButtonClicked(object sender, EventArgs e)
         {
             var aerodrome = new Aerodromes
@@ -29,18 +27,32 @@ namespace DroneApp.AerodromePages
             apptUpdate.Given_Aerodromes.Add(aerodrome);
             await App.Database.database.InsertAllAsync(apptUpdate.Given_Aerodromes);
             await App.Database.database.UpdateWithChildrenAsync(apptUpdate);
-            await Navigation.PopAsync();
+        }
+        /* OnNRGC: Event handler that navigates to a UAV site selection tool on an external browser on the user's device 
+         * Pre: none 
+         * Post: The given website is navigated to on chrome
+         */
+        private async void OnNRGC(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("WARNING", "Are you sure you want to navigate out of app?", "Yes", "No");
+            if (answer)
+            {
+                Device.OpenUri(new Uri("https://www.nrc-cnrc.gc.ca/eng/solutions/collaborative/civuas/uav_site_selection_tool.html"));
+            }
+
         }
 
-
-        private void OnNRGC(object sender, EventArgs e)
+        /* OnNRGC: Event handler that navigates to a Aerodrome locator website on an external browser on the user's device 
+         * Pre: none 
+         * Post: The given website is navigated to on chrome
+         */
+        private async void OnSkyVector(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri("https://www.nrc-cnrc.gc.ca/eng/solutions/collaborative/civuas/uav_site_selection_tool.html"));
-        }
-
-        private void OnSkyVector(object sender, EventArgs e)
-        {
-            Device.OpenUri(new Uri("https://skyvector.com/airports"));
+            var answer = await DisplayAlert("WARNING", "Are you sure you want to navigate out of app?", "Yes", "No");
+            if (answer)
+            {
+                Device.OpenUri(new Uri("https://skyvector.com/airports"));
+            }
         }
     }
 }

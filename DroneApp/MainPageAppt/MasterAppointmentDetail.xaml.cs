@@ -1,10 +1,8 @@
-﻿using System;
-
+﻿using DroneApp.AppointmentViewPages;
+using DroneApp.DataBase;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using DroneApp.AppointmentViewPages;
-using DroneApp.DataBase;
-using DroneApp.FlightPages;
 
 namespace DroneApp.MainPageAppt
 {
@@ -21,10 +19,10 @@ namespace DroneApp.MainPageAppt
             ((App)App.Current).ResumeAtTodoId = -1;
             listView.ItemsSource = await App.Database.GetItemsNotDoneAsync();
         }
-        async void OnItemAdded(object sender, EventArgs e) => await Navigation.PushAsync(new AppointmentPage
+        async void OnItemAdded(object sender, EventArgs e)
         {
-            BindingContext = new Appointment()
-        });
+            await Navigation.PushAsync(new AppointmentPage() { BindingContext = new Appointment()});
+        }
         //Toolbar button clicked 
         async void OnDoneClicked(object sender, EventArgs e) => await Navigation.PushAsync(new CompletedAppointmentsList());
 
@@ -32,26 +30,25 @@ namespace DroneApp.MainPageAppt
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new AppointmentPage
-                {
-                    BindingContext = e.SelectedItem as Appointment
-                });
+                 await Navigation.PushAsync(new AppointmentPage
+                 {
+                     BindingContext = e.SelectedItem as Appointment
+                 }); 
             }
         }
         //Context action button 
         async void OnDone(object sender, EventArgs e)
         {
-            var mi = sender as MenuItem;
-            var curr_appt = (Appointment)mi.CommandParameter;
+            var mi = ((MenuItem)sender);
             var answer = await DisplayAlert("Are you sure?", null, "Yes", "No");
+
             if (answer)
             {
-                curr_appt.Done = 1;
-                await App.Database.SaveItemAsync(curr_appt);
+                ((Appointment)mi.CommandParameter).Done = 1;
+                await App.Database.SaveItemAsync((Appointment)mi.CommandParameter);
                 listView.ItemsSource = await App.Database.GetItemsNotDoneAsync();
             }
         }
-
         async void OnDelete(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
@@ -60,22 +57,16 @@ namespace DroneApp.MainPageAppt
             if (answer)
             {
                 await App.Database.DeleteItemAsync((Appointment)mi.CommandParameter);
-                listView.ItemsSource = await App.Database.GetItemsNotDoneAsync();
+                listView.ItemsSource = await App.Database.GetItemsNotDoneAsync(); 
             }
         }
-
-        async void OnFlight(object sender, SelectedItemChangedEventArgs e)
+        async void OnInfo(object sender, SelectedItemChangedEventArgs e)
         {
-            var mi = sender as MenuItem;
-            if(e.SelectedItem != null)
+            var mi = ((MenuItem)sender);
+            if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new FlightChecks()
-                {
-                    BindingContext = mi.CommandParameter as Appointment
-                });
-
+                await Navigation.PushAsync(new FlightPages.FlightChecks() { BindingContext = mi.CommandParameter as Appointment });
             }
         }
-
     }
 }

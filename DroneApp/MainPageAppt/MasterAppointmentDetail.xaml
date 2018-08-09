@@ -2,18 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DroneApp.MainPageAppt.MasterAppointmentDetail"
-             Title="Appointments">
+             Title="Appointment"
+             Padding="20">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="OnItemAdded">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android" Value="plus.png" />
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="Done" Clicked="OnDoneClicked" />
+        <ToolbarItem Text="+" Clicked="OnItemAdded"/>
+        <ToolbarItem Text="Done" Clicked="OnDoneClicked"/>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnItemTapped">
+    <ListView x:Name="listView" ItemSelected="OnItemTapped" RowHeight="50">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -22,16 +17,16 @@
                                   CommandParameter="{Binding .}"
                                   Text="Delete" 
                                   IsDestructive="True" />
-                        <MenuItem Clicked="OnFlight"
-                                  Text="Flight Pages"
-                                  CommandParameter="{Binding .}"/>
                         <MenuItem Clicked="OnDone"
-                                  Text="Done" 
+                                  Text="Done"
+                                  CommandParameter="{Binding .}"/>
+                        <MenuItem Text="Flight Info" 
+                                  Clicked="OnInfo"
                                   CommandParameter="{Binding .}"/>
                     </ViewCell.ContextActions>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"  HorizontalOptions="StartAndExpand" FontSize="Large" TextColor="#03A9F4"/>
-                        <Label Text="{Binding StartDateJob, StringFormat='{0:MM/dd/yyyy}' }" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontSize="Small" TextColor="DarkGray" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"  HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="#03A9F4"/>
+                        <Label Text="{Binding StartDateJob, StringFormat='{0:MM/dd/yyyy}' }" VerticalTextAlignment="Center" FontSize="Small" TextColor="DarkGray"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

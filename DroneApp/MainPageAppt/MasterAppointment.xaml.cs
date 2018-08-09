@@ -36,9 +36,9 @@ namespace DroneApp.MainPageAppt
                 IsPresented = false;
                 MasterPage.ListView.SelectedItem = null;
             }
-            else if (item.Title == "Emergency Plan")
+            else
             {
-                Detail = new NavigationPage(new EmergencyPage());
+                Detail = new NavigationPage(new FlightPages.EmergencyPage());
                 var page = (Page)Activator.CreateInstance(item.TargetType);
                 page.Title = item.Title;
                 IsPresented = false;

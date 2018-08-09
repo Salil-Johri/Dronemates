@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DroneApp.AerodromePages.AerodromePage">
+             x:Class="DroneApp.AerodromePage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="OnItemAdded"/>
+        <ToolbarItem Name="Add_Aerodrome" Text="+" Clicked="OnClicked" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="AerodromeListView"
-            RowHeight="50"
-            ItemSelected="OnItemTapped"
-            CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
+    <ListView x:Name="AerodromeList"
+            ItemSelected="OnSelected"
+            CachingStrategy="RecycleElement"
+              RowHeight="50">
+        <!--Built in Cells-->
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -18,9 +17,6 @@
                         <MenuItem Clicked="OnDelete" 
                                   CommandParameter="{Binding .}"
                                   Text="Delete"  />
-                        <!--<MenuItem Clicked="OnCall" 
-                                  CommandParameter="{Binding .}"
-                                  Text="Call Aerodrome" />-->
                     </ViewCell.ContextActions>
                     <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding AeroName}" VerticalTextAlignment="Center"  HorizontalOptions="StartAndExpand" FontSize="Large" TextColor="#03A9F4"/>

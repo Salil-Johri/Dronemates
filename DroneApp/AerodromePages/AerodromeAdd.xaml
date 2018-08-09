@@ -14,15 +14,15 @@
                 <Entry Placeholder="Enter Distance"  x:Name="aeroDistance" Text="{Binding AeroDistance}"/>
                 <Label Text="Direction of Aerodrome from HP" />
                 <Entry Placeholder="Enter Direction" x:Name="aeroDirection" Text="{Binding AeroDirection}"/>
+                <Label Text="ATF" />
+                <Entry Placeholder="Enter Number" x:Name="aeroATF" Text="{Binding AeroATF}"/>
                 <Label Text="Contact Number of Aerodrome" />
                 <Entry Placeholder="Enter Number" Keyboard="Numeric" x:Name="aeroPhone" Text="{Binding AeroPhone}"/>
-                <Label Text="ATF"/>
-                <Entry Placeholder="Enter ATF"  x:Name="aeroATF" Text="{Binding AeroATF}"/>
                 <Button Text="NR GC Website" Clicked="OnNRGC" BackgroundColor="Blue" TextColor="White" />
                 <Button Text="Skyvector Website" Clicked="OnSkyVector" BackgroundColor="Blue" TextColor="White"/>
                 <Button Text="Save" Clicked="OnButtonClicked" BackgroundColor="Green"/>
                 <Button Text="Delete" BackgroundColor="Red"/>
-                </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

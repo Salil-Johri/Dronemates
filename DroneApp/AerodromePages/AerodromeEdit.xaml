@@ -7,19 +7,18 @@
         <ScrollView>
             <StackLayout x:Name="Info_Layout">
                 <Label Text="Aerodrome Code" />
-                <Entry Placeholder="Enter Code" Text="{Binding AeroCode}"/>
+                <Entry Placeholder="Enter Code" x:Name="aeroCode" Text="{Binding AeroCode}"/>
                 <Label Text="Aerodrome Name" />
-                <Entry Placeholder="Enter Name" Text="{Binding AeroName}"/>
+                <Entry Placeholder="Enter Name" x:Name="aeroName" Text="{Binding AeroName}"/>
                 <Label Text="Distance from Aerodrome"/>
-                <Entry Placeholder="Enter Distance" Text="{Binding AeroDistance}"/>
+                <Entry Placeholder="Enter Distance"  x:Name="aeroDistance" Text="{Binding AeroDistance}"/>
                 <Label Text="Direction of Aerodrome from HP" />
-                <Entry Placeholder="Enter Direction" Text="{Binding AeroDirection}"/>
+                <Entry Placeholder="Enter Direction" x:Name="aeroDirection" Text="{Binding AeroDirection}"/>
+                <Label Text="ATF" />
+                <Entry Placeholder="Enter Direction" x:Name="aeroATF" Text="{Binding AeroATF}"/>
                 <Label Text="Contact Number of Aerodrome" />
-                <Entry Placeholder="Enter Number" Keyboard="Telephone"  Text="{Binding AeroPhone}"/>
-                <!--<Button Text="NR GC Website" Clicked="OnNRGC" BackgroundColor="Blue" TextColor="White" />
-                <Button Text="Skyvector Website" Clicked="OnSkyVector" BackgroundColor="Blue" TextColor="White"/>-->
-                <Button Text="Save" Clicked="OnButtonClicked" BackgroundColor="Green"/>
-                <Button Text="Delete" BackgroundColor="Red"/>
+                <Entry Placeholder="Enter Number" Keyboard="Numeric" x:Name="aeroPhone" Text="{Binding AeroPhone}"/>
+                <Button Text="Add to List" Clicked="OnSaveClicked" TextColor="White" BackgroundColor="#03A9F4"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -34,8 +34,8 @@ namespace DroneApp.MainPageAppt
                 MenuItems = new ObservableCollection<MasterAppointmentMenuItem>(new[]
                 {
                     new MasterAppointmentMenuItem { Id = 0, Title = "Appointments" },
-                    new MasterAppointmentMenuItem { Id = 1, Title = "Settings" },
-                    new MasterAppointmentMenuItem { Id = 2, Title = "Emergency Plan" }
+                    new MasterAppointmentMenuItem { Id = 1, Title = "Emergency Protocol"}, 
+                    new MasterAppointmentMenuItem { Id = 2, Title = "Settings" }
                 });
             }
             
