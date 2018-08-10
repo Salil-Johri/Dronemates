@@ -60,16 +60,37 @@
                         <Label Text="Coordinates:" FontAttributes="Bold" />
                         <StackLayout Orientation="Horizontal" >
                             <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding DegCoord}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            <Entry Text="{Binding DegCoordLat}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding MinCoord}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            <Entry Text="{Binding MinCoordLat}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
-                            <Entry Text="{Binding SecCoord}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                            <Entry Text="{Binding SecCoordLat}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Direction" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DirectionLat}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DegCoordLong}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding MinCoordLong}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding SecCoordLong}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Direction" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DirectionLong}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        
                         <Label Text="Location:" FontAttributes="Bold" />
                         <Entry Placeholder="200 Univerity Ave., Waterloo, ON" Text="{Binding Address}"/>
                         <Label Text="Time:" FontAttributes="Bold" />
@@ -82,7 +103,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                            </Grid.RowDefinitions> 
                             <Button x:Name="FeetToMeter" Text="To Meter" Clicked="UnitConvertAsync" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0" Grid.Row="0"/>
                             <Button x:Name="MeterToFeet" Text="To Feet" Clicked="UnitConvertAsync" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1" Grid.Row="0"/>
                         </Grid>
@@ -103,28 +124,46 @@
                         <Label Text="Contact Person" FontAttributes="Bold" />
                         <Entry Placeholder="Name" Text="{Binding ContactName}" x:Name="contactNameQuestion3" FontSize="Small" />
                         <Entry Placeholder="Phone number" Text="{Binding ContactNum}" x:Name="contactPhoneQuestion3" Keyboard="Telephone" FontSize="Small"/>
-                        <Button x:Name="CallContact" Text="Call Contact" Clicked="OnCallClickedAsync" BackgroundColor="#03A9F4" TextColor="White" />
                     </StackLayout>
-                    
-                    
+
+
                     <StackLayout x:Name="Site_PrepQ4" Spacing="0">
                         <Label Text="4. Site Location" FontSize="Large" TextColor="Black" />
                         <Label Text="4.1 Map of Site: " />
                         <Button Text="View Map" TextColor="White" BackgroundColor="#03A9F4" Clicked="OnViewMap"/>
                         <Label Text="4.2. Identify Secure zone with launch/Home point" />
                         <StackLayout Orientation="Horizontal" >
-                                <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
-                                <Entry Text="{Binding DegCoordLaunch}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
-                                <Entry Text="{Binding MinCoordLaunch}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                            </StackLayout>
-
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
-                                <Entry Text="{Binding SecCoordLaunch}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
-                            </StackLayout>
+                            <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DegCoordLatHome}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding MinCoordLatHome}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding SecCoordLatHome}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Direction" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DirectionLatHome}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="Deg" Grid.Column="0" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DegCoordLongHome}" Placeholder="Enter Deg" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Min" Grid.Column="2" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding MinCoordLongHome}" Placeholder="Enter Min" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Sec" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding SecCoordLongHome}" Placeholder="Enter Sec" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Direction" Grid.Column="4" VerticalOptions="EndAndExpand" FontSize="Small" />
+                            <Entry Text="{Binding DirectionLongHome}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
+                        </StackLayout>
                     </StackLayout>
                     <StackLayout x:Name="Site_PrepQ5" Spacing="0">
                         <Label Text="5. Identify Nearby Aerodromes" FontSize="Large" TextColor="Black"/>
@@ -163,7 +202,7 @@
                         </Picker>
                         <Button Text="Call ACC" BackgroundColor="#03A9F4" TextColor="White" Clicked="OnACCManagerCallAsync"/>
                     </StackLayout>
-                    
+
 
                     <StackLayout x:Name="Site_PrepQ8">
                         <Label Text="8. NOTAM File" FontSize="Large" TextColor="Black"/>
@@ -193,9 +232,32 @@
                             <Entry Text="{Binding DirectionNotam}" Placeholder="Enter Direction" Grid.Column="5" HorizontalOptions="EndAndExpand" VerticalOptions="End" FontSize="Small"/>
                         </StackLayout>
                         <Label Text="Area - Radius (nm)" />
-                        <Entry Placeholder="Enter Radius" Text="{Binding Radius}" Keyboard="Numeric" FontSize="Small"/>
+                        <Entry x:Name="RadiusNotam" Placeholder="Enter Radius" Text="{Binding RadiusNM}" Keyboard="Numeric" FontSize="Small"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Text="TO NM" Clicked="OnRadiusAreaClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0" Grid.Row="0"/>
+                            <Button Text="TO Meters" Clicked="OnRadiusAreaClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1" Grid.Row="0"/>
+                        </Grid> 
                         <Label Text="Height Above Ground Level (ft)" FontSize="Small"/>
-                        <Entry Placeholder="Enter Height (ft)" Text="{Binding MaxAlt}" Keyboard="Numeric" FontSize="Small"/>
+                        <Entry x:Name="AltNotam" Placeholder="Enter Height (ft)" Text="{Binding MaxAlt}" Keyboard="Numeric" FontSize="Small"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Text="TO Feet" Clicked="OnAreaClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="0" Grid.Row="0"/>
+                            <Button Text="TO Meters" Clicked="OnAreaClicked" BackgroundColor="#03A9F4" TextColor="White" Grid.Column="1" Grid.Row="0"/>
+                        </Grid>
+
                         <Label Text="Type of UAV" />
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -215,10 +277,15 @@
                         <Label Text="Weight of UAV (lb)" />
                         <Entry x:Name="WeightEntry"  Placeholder="Enter Weight" Text="{Binding UAVWeight}" FontSize="Small"/>
                         <Label Text="Date of Mission: " />
-                        <DatePicker x:Name="NotamDatePicker"
+                        <Label Text="Time of Mission (UTC)" />
+                        <DatePicker x:Name="NotamDatePickerStart"
                                     Format="d"
-                                    Date="{Binding DateNotam}" />
-                        <Label Text="Time of Mission" />
+                                    Date="{Binding DateNotamStart}" />
+                        <Label Text="End Date of Mission: " />
+                        <DatePicker x:Name="NotamDatePickerEnd"
+                                    Format="d"
+                                    Date="{Binding DateNotamEnd}" />
+                        <Label Text="Start Time of Mission (UTC Hours)" />
                         <Grid ColumnSpacing="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -227,13 +294,24 @@
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <Entry Placeholder="HH" Text="{Binding Hour}" Grid.Row="0" Keyboard="Numeric" x:Name="notamHourQuestion8" Grid.Column="0" WidthRequest="50" FontSize="Small"/>
-                            <Entry Placeholder="MM" Text="{Binding Min}" Grid.Row="0" Keyboard="Numeric" x:Name="notamMinuteQuestion8" Grid.Column="1" WidthRequest="50" FontSize="Small"/>
+                            <Entry Placeholder="HH" Text="{Binding HourStart}" Grid.Row="0" Keyboard="Numeric" x:Name="notamHourQ8" Grid.Column="0" WidthRequest="50" FontSize="Small"/>
+                            <Entry Placeholder="MM" Text="{Binding MinStart}" Grid.Row="0" Keyboard="Numeric" x:Name="notamMinuteQ8" Grid.Column="1" WidthRequest="50" FontSize="Small"/>
+                        </Grid>
+                        <Label Text="End Time of Mission (UTC Hours)" />
+                        <Grid ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Entry Placeholder="HH" Text="{Binding HourEnd}" Grid.Row="0" Keyboard="Numeric" x:Name="notamHourQuestion8" Grid.Column="0" WidthRequest="50" FontSize="Small"/>
+                            <Entry Placeholder="MM" Text="{Binding MinEnd}" Grid.Row="0" Keyboard="Numeric" x:Name="notamMinuteQuestion8" Grid.Column="1" WidthRequest="50" FontSize="Small"/>
                         </Grid>
                         <Label Text="Contact Phone Number: " />
                         <Entry Placeholder="Enter phone number" Text="{Binding NotamPhone}" Keyboard="Telephone" />
                     </StackLayout>
-                    <Button Clicked="OnSaveClicked" Text="Save" BackgroundColor="Green"/>
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>
@@ -394,7 +472,6 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </StackLayout>
-                    <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" />
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>
@@ -512,7 +589,6 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </StackLayout>
-                    <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" />
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>
@@ -737,8 +813,6 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </StackLayout>
-
-                    <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" />
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>

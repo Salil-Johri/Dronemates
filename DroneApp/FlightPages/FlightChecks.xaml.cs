@@ -12,16 +12,12 @@ namespace DroneApp.FlightPages
     public partial class FlightChecks : TabbedPage
     {
         public FlightChecks() => InitializeComponent();
-        async void OnSaveClicked(object sender, EventArgs e)
-        {
-            var apptitem = (Appointment)BindingContext;
-            await App.Database.SaveItemAsync(apptitem);
-        }
-
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            NotamDatePicker.MinimumDate = DateTime.Now;
+            NotamDatePickerStart.MinimumDate = DateTime.Now;
+            NotamDatePickerEnd.MinimumDate = DateTime.Now; 
         }
         
         private async void OnViewMap(object sender, EventArgs e)
@@ -79,14 +75,14 @@ namespace DroneApp.FlightPages
                 {
                     double feet = ((Appointment)BindingContext).Radius;
                     double meter = feet * 0.31;
-                    ((Appointment)BindingContext).MaxAlt = meter;
+                    ((Appointment)BindingContext).Radius = meter;
                     radiusQuestion3.Text = meter.ToString();
                 }
                 else
                 {
                     double meter = ((Appointment)BindingContext).Radius;
                     double feet = meter / 0.31;
-                    ((Appointment)BindingContext).MaxAlt = feet;
+                    ((Appointment)BindingContext).Radius = feet;
                     radiusQuestion3.Text = feet.ToString();
                 }
             }
@@ -116,16 +112,7 @@ namespace DroneApp.FlightPages
         }
         private async void OnCallClickedAsync(object sender, EventArgs e)
         {
-            string CallNumber = null;
-
-            if ((sender as Button).Text == "Call Contact")
-            {
-                CallNumber = ((Appointment)BindingContext).ContactNum;
-            }
-            else
-            {
-                CallNumber = ((Appointment)BindingContext).NotamNum;
-            }
+            string CallNumber = ((Appointment)BindingContext).NotamNum;
 
             if (CallNumber != null)
             {
@@ -213,5 +200,46 @@ namespace DroneApp.FlightPages
                 Site_PrepQ8.IsVisible = true;
             }
         }
+        private async void OnAreaClicked(object sender, EventArgs e)
+        {
+            var apptitem = (Appointment)BindingContext;
+            await App.Database.SaveItemAsync(apptitem);
+
+            if ((sender as Button).Text == "To Meters")
+            {
+                double feet = ((Appointment)BindingContext).MaxAlt;
+                double meter = feet * 0.31;
+                ((Appointment)BindingContext).MaxAlt = meter;
+                AltNotam.Text = meter.ToString();
+            }
+            else
+            {
+                double meter = ((Appointment)BindingContext).MaxAlt;
+                double feet = meter / 0.31;
+                ((Appointment)BindingContext).MaxAlt = feet;
+                AltNotam.Text = feet.ToString();
+            }
+        }
+        private async void OnRadiusAreaClicked(object sender, EventArgs e)
+        {
+            var apptitem = (Appointment)BindingContext;
+            await App.Database.SaveItemAsync(apptitem);
+
+            if ((sender as Button).Text == "To Meters")
+            {
+                double feet = ((Appointment)BindingContext).RadiusNM;
+                double meter = feet * 1852;
+                ((Appointment)BindingContext).RadiusNM = meter;
+                RadiusNotam.Text = meter.ToString();
+            }
+            else
+            {
+                double meter = ((Appointment)BindingContext).RadiusNM;
+                double feet = meter / 1852;
+                ((Appointment)BindingContext).RadiusNM = feet;
+                RadiusNotam.Text = feet.ToString();
+            }
+        }
+    
     }
 }
