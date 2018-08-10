@@ -51,6 +51,7 @@ namespace DroneApp.DataBase
         public string AirportCode { get; set; }
         public double MaxAlt { get; set; }
         public double Radius { get; set; }
+        public double RadiusNM { get; set; }
         public string Wingspan { get; set; }
         public string UAVWeight { get; set; }
         public string NotamPhone { get; set; }
@@ -64,6 +65,29 @@ namespace DroneApp.DataBase
         public string MinCoordNotam { get; set; }
         public string SecCoordNotam { get; set; }
         public string DirectionNotam { get; set; }
+        public string DegCoordLat { get; set; }
+        public string MinCoordLat { get; set; }
+        public string SecCoordLat { get; set; }
+        public string DirectionLat { get; set; }
+        public string DegCoordLong { get; set; }
+        public string MinCoordLong { get; set; }
+        public string SecCoordLong { get; set; }
+        public string DirectionLong { get; set; }
+        public string DegCoordLatHome { get; set; }
+        public string MinCoordlatHome { get; set; }
+        public string SecCoordLatHome { get; set; }
+        public string DirectionLatHome { get; set; }
+        public string DegCoordLongHome { get; set; }
+        public string MinCoordlonghome { get; set; }
+        public string SecCoordLongHome { get; set; }
+        public string DirectionLongHOme { get; set; }
+        public string HourStart { get; set; }
+        public string MinStart { get; set; }
+        public string HourEnd { get; set; }
+        public string MinEnd { get; set; }
+        public DateTime DateNotamStart { get; set; }
+        public DateTime DateNotamEnd { get; set; }
+        
         // NORMAL PREP PAGE
         public string AccCalled { get; set; }
         public string Damage2Drone { get; set; }
