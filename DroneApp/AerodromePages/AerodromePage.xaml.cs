@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using DroneApp.DataBase;
 using SQLiteNetExtensionsAsync.Extensions;
 using DroneApp.AerodromePages;
+using DroneApp.PhoneDialer;
 
 namespace DroneApp
 {
@@ -53,6 +54,40 @@ namespace DroneApp
                 // Update appointment object in database, refresh list view. 
                 await App.Database.database.UpdateWithChildrenAsync(appt);
                 AerodromeList.ItemsSource = appt.Given_Aerodromes;
+            }
+        }
+        private async void OnCall(object sender, EventArgs e)
+        {
+            string CallNumber = null;
+            var mi = sender as MenuItem;
+
+            var aero = mi.CommandParameter as Aerodromes;
+
+            // Gets phone number of selected aerodrome
+            CallNumber = aero.AeroPhone;
+
+            // If there is a call number
+            if (CallNumber != null)
+            {
+                // Displays alert ensuring user wants to call number
+
+                var answer = await this.DisplayAlert(
+                       "Dial a Number",
+                       "Would you like to call " + CallNumber + "?",
+                       "Yes",
+                       "No");
+
+                // If user answers yes, app navigates to dialer.
+                if (answer)
+                {
+                    var dialer = DependencyService.Get<IDialer>();
+                    if (dialer != null)
+                        dialer.Dial(CallNumber);
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "There's no number provided", "Ok");
             }
         }
     }

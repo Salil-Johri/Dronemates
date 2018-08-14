@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DroneApp.AerodromePage">
+             x:Class="DroneApp.AerodromePage"
+             Padding="20">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add_Aerodrome" Text="+" Clicked="OnClicked" />
     </ContentPage.ToolbarItems>
@@ -17,8 +18,11 @@
                         <MenuItem Clicked="OnDelete" 
                                   CommandParameter="{Binding .}"
                                   Text="Delete"  />
+                        <MenuItem Clicked="OnCall" 
+                                  CommandParameter="{Binding .}"
+                                  Text="Call"  />
                     </ViewCell.ContextActions>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding AeroName}" VerticalTextAlignment="Center"  HorizontalOptions="StartAndExpand" FontSize="Large" TextColor="#03A9F4"/>
                         <Label Text="{Binding AeroDirection}" HorizontalOptions="End" VerticalTextAlignment="Center"/>
                         <Label Text="{Binding AeroDistance}" HorizontalOptions="End" VerticalTextAlignment="Center"/>
