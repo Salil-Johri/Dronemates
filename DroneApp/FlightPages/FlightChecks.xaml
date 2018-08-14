@@ -386,7 +386,7 @@
                             </Picker.ItemsSource>
                         </Picker>
                         <Label Text="b. Cloud Ceiling more than 1000 ft AGL" FontAttributes="Bold"/>
-                        <Picker x:Name="morningPrepQuestion_2b" Title="Select One" SelectedItme="{Binding cloud_ceiling}">
+                        <Picker x:Name="morningPrepQuestion_2b" Title="Select One" SelectedItem="{Binding cloud_ceiling}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Yes</x:String>
