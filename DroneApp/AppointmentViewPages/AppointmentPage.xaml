@@ -18,29 +18,45 @@
                     Format="d"
                     MinimumDate="{Binding MinDate}"
                     Date="{Binding EndDateJob}"/>
+            <Label Text="Appointment Address: "/>
+            <Label Text="{Binding Address}"/>
+            <Picker x:Name="SelectedLocationOptions" Title="Location Options" SelectedIndexChanged="OnLocationOption">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Use Current Location</x:String>
+                        <x:String>Enter Address</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <Button x:Name="Curr_"
                     Text="Use Current Location"
                     Clicked="Current_Location"
                     BackgroundColor="#03A9F4"
-                    TextColor="White"/>
-            <Label Text="Enter Location"/>
-            <Entry x:Name="SetLocation"
-                   Text=""
-                   Placeholder="Street Address, City, Province/State" />
-            <Button x:Name="Set_" Text="Save Location" Clicked="Set_Location" BackgroundColor="#03A9F4" TextColor="White">
-                <Button.Triggers>
-                    <DataTrigger TargetType="Button"
+                    TextColor="White"
+                    IsVisible="False" />
+            <StackLayout x:Name="LocationLayout" IsVisible="False">
+                <Label Text="Enter or Change Location"/>
+                <Entry x:Name="SetLocation"
+                       Text=""
+                       Placeholder="Street Address, City, Province/State" />
+                <Button x:Name="Set_" Text="Save Location" Clicked="Set_Location" BackgroundColor="#03A9F4" TextColor="White">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
                                  Binding="{Binding Source={x:Reference SetLocation},
                                        Path=Text.Length}"
                                  Value="0">
-                        <Setter Property="IsEnabled" Value="False" />
-                    </DataTrigger>
-                </Button.Triggers>
-            </Button>
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackLayout>
             <Button Text="Flight Pages" Clicked="OnFlightPages" BackgroundColor="#03A9F4" TextColor="White" />
+           <!-- <Button Text="View Documents" Clicked="OnFileClicked" BackgroundColor="#03A9F4" TextColor="White" /> -->
+            <Button Text="Send Email" Clicked="WriteTXT" BackgroundColor="#03A9F4" TextColor="White"/>
+            <Label Text=""/> 
             <Button Text="Save" Clicked="OnSaveClicked" BackgroundColor="Green" TextColor="White"/>
             <Button Text="Delete" Clicked="OnDeleteClicked" BackgroundColor="Red" TextColor="White"/>
-            <Button Text="Cancel" Clicked="OnCancelClicked" TextColor="White" BackgroundColor="Gray"/>            
+            <Button Text="Cancel" Clicked="OnCancelClicked" TextColor="White" BackgroundColor="Gray"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
