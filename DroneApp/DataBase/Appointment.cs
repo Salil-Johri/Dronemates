@@ -7,7 +7,16 @@ namespace DroneApp.DataBase
 {
     public class Appointment
     {
+        // Main Appointment object, acts as object that saves all information in app. 
+        // this object is saved to database, along with children data types
+
+        /* Primarykey is for database, which assigns key to an instance of the object which is used to access this object. 
+         * AutoIncrement automatically increments the key value so that it does not have to be done manually.
+         */
         [PrimaryKey, AutoIncrement]
+        /* These data types are for the overarching "appointment", and is basic information of the appointment, such as lat and long for 
+         * the location, whether the appointment is done or not, etc. 
+         */
         public int ID { get; set; }
         public int Done { get; set; }
         public DateTime StartDateJob { get; set; }
@@ -19,23 +28,24 @@ namespace DroneApp.DataBase
         public string Address { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
-        public int SaveCount { get; set; }
 
-        //Aerodrome Page 
+        // This list of objects is used for the Aerodromes page to display aerodromes. 
+        // The OneToMany relationship allows the list to be saved as a child of the Appointment object
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Aerodromes> Given_Aerodromes { get; set; }
 
-        //Pins 
+        // This list of objects is used in the map, to save a list of pins that the user makes.
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Pins> PinList { get; set; }
-        //Circles
+
+
+        // This list of objects is used in the map page, to save a list of circles that the user makes on app.
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Circles> CircleList { get; set; }
 
-        // site prep
+        // These variables are for the Site prep page, and are used to save the information inputted into this page. 
         public string DroneName { get; set; }
         public string OwnerPerm { get; set; }
-        public string Location { get; set; }
         public string UAVType { get; set; }
         public string Airspace { get; set; }
         public string ContactName { get; set; }
@@ -47,48 +57,29 @@ namespace DroneApp.DataBase
         public string PoliceNum { get; set; }
         public string NotamNum { get; set; }
         public string AmbNum { get; set; }
-        public string AirportName { get; set; }
-        public string AirportCode { get; set; }
         public double MaxAlt { get; set; }
         public double Radius { get; set; }
-        public double RadiusNM { get; set; }
         public string Wingspan { get; set; }
         public string UAVWeight { get; set; }
         public string NotamPhone { get; set; }
-        public string DegCoord { get; set; }
-        public string MinCoord { get; set; }
-        public string SecCoord { get; set; }
-        public string DegCoordLaunch { get; set; }
-        public string MinCoordLaunch { get; set; }
-        public string SecCoordLaunch { get; set; }
-        public string DegCoordNotam { get; set; }
-        public string MinCoordNotam { get; set; }
-        public string SecCoordNotam { get; set; }
-        public string DirectionNotam { get; set; }
-        public string DegCoordLat { get; set; }
-        public string MinCoordLat { get; set; }
-        public string SecCoordLat { get; set; }
-        public string DirectionLat { get; set; }
-        public string DegCoordLong { get; set; }
-        public string MinCoordLong { get; set; }
-        public string SecCoordLong { get; set; }
-        public string DirectionLong { get; set; }
-        public string DegCoordLatHome { get; set; }
-        public string MinCoordlatHome { get; set; }
-        public string SecCoordLatHome { get; set; }
-        public string DirectionLatHome { get; set; }
-        public string DegCoordLongHome { get; set; }
-        public string MinCoordlonghome { get; set; }
-        public string SecCoordLongHome { get; set; }
-        public string DirectionLongHOme { get; set; }
+        public int degreesLat { get; set; }
+        public int minutesLat { get; set; }
+        public double secondsLat { get; set; }
+        public string directionLat { get; set; }
+        public int degreesLong { get; set; }
+        public int minutesLong { get; set; }
+        public double secondsLong { get; set; }
+        public string directionLong { get; set; }
+        public DateTime DateNotamStart { get; set; }
+        public DateTime DateNotamEnd { get; set; }
+        public double RadiusNM { get; set; }
         public string HourStart { get; set; }
         public string MinStart { get; set; }
         public string HourEnd { get; set; }
         public string MinEnd { get; set; }
-        public DateTime DateNotamStart { get; set; }
-        public DateTime DateNotamEnd { get; set; }
-        
-        // NORMAL PREP PAGE
+
+
+        // These variables are for the Normal prep page, and are used to save the information inputted into this page.
         public string AccCalled { get; set; }
         public string Damage2Drone { get; set; }
         public string BatteriesCharged { get; set; }
@@ -110,7 +101,9 @@ namespace DroneApp.DataBase
         public string description_if_no { get; set; }
         public string can_project_go { get; set; }
         public string MultFlight { get; set; }
-        // MORNING PREP PAGE
+
+
+        //  These variables are for the Morning prep page, and are used to save the information inputted into this page. 
         public string batteries_remote { get; set; }
         public string batteries_intelligent_flight { get; set; }
         public string batteries_mobile_device { get; set; }
@@ -126,21 +119,17 @@ namespace DroneApp.DataBase
         public string tor_vta { get; set; }
         public string drone_manuals { get; set; }
         public string dji_working { get; set; }
-        // SECURITY PREP PAGE
-        // Q1
+
+        //  These variables are for the Security prep page, and are used to save the information inputted into this page. 
         public string home_point_confirm { get; set; }
-        // Q2
         public string pylons_around_site { get; set; }
-        // Q3
         public string fire_extinguisher { get; set; }
         public string first_aid_kit { get; set; }
         public string ground_supervisor { get; set; }
         public string aviation_radio { get; set; }
         public string necessary_docs { get; set; }
-        // Q4
         public string site_clear { get; set; }
         public string unnecessary_equip_stored { get; set; }
-        // Q5
         public string distance_public_maintained { get; set; }
     }
 }
